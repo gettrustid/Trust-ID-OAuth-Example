@@ -102,6 +102,7 @@ When adding the button to your own pages:
 |-----------|----------|-------------|
 | `data-client-id` | Yes | Your Keycloak client ID |
 | `data-redirect-uri` | Yes | Your callback URL |
+| `data-idp-hint` | Your hint for TrustID provider in your keycloak
 | `data-authorization-endpoint` | Yes | Your Keycloak auth endpoint |
 | `data-container` | No | CSS selector for button container |
 | `data-size` | No | `standard` (default) or `large` |
