@@ -95,6 +95,7 @@ When adding the button to your own pages:
   data-redirect-uri="https://yoursite.com/auth/callback"
   data-authorization-endpoint="https://YOUR_KEYCLOAK/realms/REALM/protocol/openid-connect/auth"
   data-container="#trustid-btn"
+  data-idp-hint="your-idp-hint-for-trust-id"
 ></script>
 ```
 
@@ -102,7 +103,7 @@ When adding the button to your own pages:
 |-----------|----------|-------------|
 | `data-client-id` | Yes | Your Keycloak client ID |
 | `data-redirect-uri` | Yes | Your callback URL |
-| `data-idp-hint` | Your hint for TrustID provider in your keycloak
+| `data-idp-hint` | No | Your hint for TrustID provider in your keycloak |
 | `data-authorization-endpoint` | Yes | Your Keycloak auth endpoint |
 | `data-container` | No | CSS selector for button container |
 | `data-size` | No | `standard` (default) or `large` |
