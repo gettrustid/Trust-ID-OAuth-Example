@@ -18,7 +18,7 @@ const CLIENT_SECRET = process.env.KEYCLOAK_CLIENT_SECRET;
 const TOKEN_ENDPOINT = process.env.KEYCLOAK_TOKEN_ENDPOINT;
 const AUTH_ENDPOINT = process.env.KEYCLOAK_AUTH_ENDPOINT;
 const REDIRECT_URI = process.env.REDIRECT_URI || `http://localhost:${PORT}/auth/callback`;
-const IDP_HINT = process.env.IDP_HINT || "";
+const IDP_HINT = process.env.IDP_HINT;
 
 // Button script: serve from bundled file by default, or use CDN if USE_CDN=true
 const USE_CDN = process.env.USE_CDN === "true";
@@ -26,12 +26,13 @@ const BUTTON_SCRIPT_URL = USE_CDN
   ? "https://oauth.trustid.life/trustid-oauth.iife.js"
   : "/trustid-oauth.iife.js";
 
-if (!CLIENT_ID || !CLIENT_SECRET || !TOKEN_ENDPOINT || !AUTH_ENDPOINT) {
+if (!CLIENT_ID || !CLIENT_SECRET || !TOKEN_ENDPOINT || !AUTH_ENDPOINT || !IDP_HINT) {
   console.error("\nMissing required environment variables:");
   console.error("  KEYCLOAK_CLIENT_ID");
   console.error("  KEYCLOAK_CLIENT_SECRET");
   console.error("  KEYCLOAK_TOKEN_ENDPOINT");
-  console.error("  KEYCLOAK_AUTH_ENDPOINT\n");
+  console.error("  KEYCLOAK_AUTH_ENDPOINT");
+  console.error("  IDP_HINT\n");
   process.exit(1);
 }
 
@@ -82,7 +83,7 @@ app.get("/", (req, res) => {
     data-authorization-endpoint="${AUTH_ENDPOINT}"
     data-container="#trustid-btn"
     data-size="large"
-    ${IDP_HINT ? `data-idp-hint="${IDP_HINT}"` : ""}
+    data-idp-hint="${IDP_HINT}"
     defer
   ></script>
 </body>
